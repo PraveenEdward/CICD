@@ -1,7 +1,5 @@
 #!/bin/bash
-
-APP_DIR="/var/www/html"
-cd $APP_DIR || exit 1
+set -e
 
 echo "Stopping any existing Node.js process..."
 pkill -f "node server.js" || true

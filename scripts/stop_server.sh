@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Stopping Nodejs server..."
-sudo fuser -k 3000/tcp || ture
+sudo fuser -k 3000/tcp || true
 
 
 

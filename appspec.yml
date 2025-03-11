@@ -1,35 +1,29 @@
-version : 0.0
-os : Linux
+version: 0.0
+os: linux 
 
 files:
- - source: /
-   destination: /var/www/html
-   overwrite : true
-
-permissions:
-  - object: /var/www/html
-    owner: ubuntu
-    group: ubuntu
-    mode: 755
+  - source: /
+    destination: /var/www/html
+    overwrite: true
 
 hooks:
+  ApplicationStop: 
+    - location: scripts/stop_server.sh
+      timeout: 300
+      runas: root
+
   BeforeInstall:
-  - location: scripts/before_install.sh
-    timeout: 300
-    runas: root
+    - location: scripts/before_install.sh
+      timeout: 300
+      runas: root
 
   AfterInstall:
-  - location: scripts/after_install.sh
-    timeout: 300
-    runas: root
+    - location: scripts/after_install.sh
+      timeout: 300
+      runas: root
 
-  StartServer:
-  - location: scripts/start_server.sh
-    timeout: 300
-    runas: root
+  ApplicationStart:  
+    - location: scripts/start_server.sh
+      timeout: 300
+      runas: root
 
-  StopServer:
-  - location: scripts/stop_server.sh
-    timeout: 300
-    runas: root
-    
