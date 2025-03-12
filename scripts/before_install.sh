@@ -1,16 +1,16 @@
 #!/bin/bash
 set -e
 
-echo "Installing Nodejs..."
-curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-sudo apt install nodejs nginx -y
-sudo systemctl restart nginx
-sudo systemctl enable nginx
+echo "Updating system..."
+sudo apt update -y
 
-echo "checking versions..."
+echo "Installing Node.js 18..."
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt install -y nodejs
+
+echo "Verifying Node.js installation..."
 node -v
 npm -v
 
-echo "setup complete!"
-
-
+echo "Stopping existing application..."
+pm2 stop all || true

@@ -1,11 +1,15 @@
 #!/bin/bash
+set -e
 
-echo "Stopping Nodejs server..."
-sudo fuser -k 3000/tcp || true
+echo "Stopping Node.js server..."
 
+# Find and kill the process running on port 3000
+PID=$(lsof -t -i:3000)
 
-
-echo "Stoping nginx server..."
-sudo systemctl stop nginx
-
-echo "server stopped succesfully!"
+if [ ! -z "$PID" ]; then
+  echo "Killing process with PID: $PID"
+  kill -9 $PID
+  echo "Node.js server stopped successfully!"
+else
+  echo "No Node.js process found running on port 3000."
+fi
