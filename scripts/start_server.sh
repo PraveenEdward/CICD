@@ -13,6 +13,6 @@ if [ ! -z "$PID" ]; then
 fi
 
 # Start the Node.js application in the background
-nohup node server.js > output.log 2>&1 &
+node server.js
 
 echo "Server started successfully!"
