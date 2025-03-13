@@ -11,6 +11,6 @@ if [ ! -z "$PID" ]; then
 fi
 
 # Start the Node.js app as the ubuntu user
-sudo -u ubuntu nohup node /var/www/html/server.js > /var/www/html/output.log 2>&1 &
+nohup node server.js > /var/www/html/output.log 2>&1 &
 
 echo "Server started successfully!" | tee -a /var/www/html/startup.log
