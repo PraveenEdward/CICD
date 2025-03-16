@@ -22,7 +22,7 @@ if [ -f /var/www/html/database.env ]; then
   echo "database.env found, keeping it unchanged."
 else
   echo "ERROR: database.env is missing! Deployment failed."
-  exit 1  # Stop deployment if the file is missing
+  exit 1
 fi
 
 echo "Setup Complete"

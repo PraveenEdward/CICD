@@ -13,4 +13,4 @@ else
     echo "No process found running on port 3000."
 fi
 
-echo "Node.js application stopped successfull."
+echo "Node.js application stopped successfull.."
